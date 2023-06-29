@@ -1,0 +1,177 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.notes {
+  display: grid;
+  gap: 0.4rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 5rem 0.5rem;
+  padding-top: 10rem;
+}
+
+.notes .note:nth-child(odd) {
+  background-color: rgb(49, 186, 196);
+}
+
+.notes .note {
+  position: relative;
+  /* border: 2px solid; */
+  padding: 1rem;
+  padding-bottom: 4rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.733);
+  background-color: lightgreen;
+}
+.notes .note p {
+  text-align: justify;
+  color: white;
+}
+.edit,
+.delete {
+  font-size: 30px;
+  position: absolute;
+  bottom: 5px;
+  right: 40px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.delete {
+  right: 5px;
+}
+.edit:hover,
+.delete:hover {
+  scale: 1.2;
+  color: blueviolet;
+}
+
+@media (max-width: 900px) {
+  .notes {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 700px) {
+  .notes {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 400px) {
+  .notes {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ADD NOTE FORM  */
+.addNote {
+  margin-top: 60px;
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border: 2px solid;
+  background-color: blueviolet;
+  top: 0px;
+  left: 50vw;
+  transform: translateX(-50%);
+  transition: all 0.5s;
+  z-index: 1;
+}
+.addNote .formContainer {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.addNote .formContainer .form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+.addNote .formContainer .form input,
+textarea {
+  width: 300px;
+  padding: 1rem;
+  border-radius: 50px;
+}
+textarea {
+  height: 200px;
+}
+.addNote.active {
+  transform: translate(-50%, -120%);
+}
+
+.addNote > .formContainer button {
+  padding: 1rem;
+  border-radius: 50px;
+  width: 60%;
+  font-size: 20px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 10px #0000008c;
+}
+
+/* EDIT NOTE  */
+
+.editNote {
+  margin-top: 60px;
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border: 2px solid;
+  background-color: blueviolet;
+  top: 0px;
+  left: 50vw;
+  transform: translateX(-50%);
+  transition: all 0.5s;
+  z-index: 1;
+}
+.editNote h1 {
+  text-align: center;
+  color: white;
+  padding: 1rem 0;
+}
+.editFormContainer {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.editForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+.editNote .editFormContainer .editForm input,
+textarea {
+  width: 300px;
+  padding: 1rem;
+  border-radius: 50px;
+}
+.editNote > .editFormContainer button {
+  padding: 1rem;
+  border-radius: 50px;
+  width: 60%;
+  font-size: 20px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 10px #0000008c;
+}
+.editNote.active {
+  transform: translate(-50%, -120%);
+}

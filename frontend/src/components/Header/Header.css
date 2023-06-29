@@ -1,0 +1,136 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.header {
+  width: 100vw;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: blueviolet;
+  color: white;
+  padding: 0 50px;
+  position: fixed;
+  z-index: 999;
+  box-shadow: 0 0 10px black;
+}
+.header .logo .logoIcon {
+  font-size: 40px;
+}
+.header .nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+.header .nav .ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.header .nav .ul li {
+  list-style: none;
+  transition: all 0.5s;
+  font-weight: bold;
+}
+.header .nav .ul li:hover {
+  color: black;
+}
+.header .nav .ul .link {
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+}
+
+.header .icons {
+  position: relative;
+  display: none;
+}
+.header .icons b {
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  top: -15px;
+}
+.header .icons .bars {
+  display: none;
+}
+.btn {
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .header .icons {
+    display: block;
+  }
+
+  .header .nav .ul {
+    width: 100vw;
+    height: calc(100vh - 60px);
+    background-color: gray;
+    color: white;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    flex-direction: column;
+    gap: 4rem;
+    transition: 0.5s;
+  }
+}
+
+.header.active .nav .ul {
+  left: -100vw;
+}
+.header.active .icons .close {
+  display: none;
+}
+.header.active .icons .bars {
+  display: block;
+}
+
+/* ADD NOTE FORM  */
+/* .addNote {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border: 2px solid;
+    background-color: gray;
+    top: 60px;
+    left: 50vw;
+    transform: translateX(-50%);
+    transition: all 0.5s;
+  }
+  .addNote .formContainer {
+    width: inherit;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .addNote .formContainer .form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .addNote .formContainer .form input,
+  textarea {
+    width: 300px;
+    padding: 1rem;
+    border-radius: 50px;
+  }
+  textarea {
+    height: 200px;
+  }
+  .addNote.active {
+    transform: translate(-50%, -120%);
+  } */
