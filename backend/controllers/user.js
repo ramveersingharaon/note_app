@@ -1,21 +1,24 @@
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 
 const register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
-
-    if (password) {
-      const hash = await bcrypt.hash(password, 10);
-      const user = new User({ name, email, password: hash });
-      await user.save();
-      return res.status(200).json({
-        message: "user Register Successfully",
+    if (!name || !email || !password) {
+      return res.status(400).json({
+        message: "Plese fill all Fieled",
         success: true,
       });
     }
+    const user = new User({ name, email, password });
+    await user.save();
+    return res.status(200).json({
+      message: "user Register Successfully",
+      success: true,
+    });
   } catch (error) {
+    console.log(error);
     return res.status(400).json({
       message: error.message,
       success: false,
@@ -25,21 +28,28 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = await User.findOne({ email });
+    if (!email || !password) {
+      return res.status(400).json({
+        message: "Email and password is required",
+        success: false,
+      });
+    }
+    const user = await User.findOne({ email, password });
+
     if (!user) {
       return res.status(400).json({
-        message: "user does not exist",
+        message: "User does not exist",
         success: false,
       });
     }
 
-    const compare = await bcrypt.compare(password, user.password);
-    if (!compare) {
-      return res.status(400).json({
-        message: "invalid Credentials",
-        success: false,
-      });
-    }
+    // const compare = await bcrypt.compare(password, user.password);
+    // if (!compare) {
+    //   return res.status(400).json({
+    //     message: "invalid Credentials",
+    //     success: false,
+    //   });
+    // }
 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1d",

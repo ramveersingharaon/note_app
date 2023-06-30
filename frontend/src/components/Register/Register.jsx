@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import './Register.css'
 import { useDispatch } from 'react-redux'
 import { register } from '../../redux/actions/userAction'
-import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux'
@@ -12,7 +11,6 @@ const Register = () => {
 
 
     const dispatch = useDispatch()
-    const navigate = useNavigate()
     const initialState = {
         name: "",
         email: "",
@@ -26,7 +24,7 @@ const Register = () => {
         await dispatch(register(form))
         console.log(form)
         setForm(initialState)
-        navigate('/login')
+
     }
 
 

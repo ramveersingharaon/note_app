@@ -6,7 +6,7 @@ export const getNotes = () => async (dispatch) => {
         dispatch({ type: "GET_NOTES_SUCCESS", payload: data })
 
     } catch (error) {
-        // console.log(error)
+        console.log(error)
         dispatch({ type: "GET_NOTES_FAIL", payload: error.response.data.message })
     }
 }
@@ -18,6 +18,7 @@ export const createNote = (note) => async (dispatch) => {
 
         dispatch({ type: "CREATE_NOTES_SUCCESS", payload: data })
     } catch (error) {
+        console.log(error)
         dispatch({ type: "CREATE_NOTES_FAIL", payload: error.response.data.message })
     }
 }

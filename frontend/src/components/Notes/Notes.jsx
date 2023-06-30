@@ -7,8 +7,10 @@ import { useDispatch } from 'react-redux'
 import { createNote, deleteNote, updateNote, getNotes } from '../../redux/actions/noteAction'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom'
 
 const Notes = ({ toggleForm, setToggleForm }) => {
+    const navigate = useNavigate()
     const { message, error } = useSelector(state => state.note)
 
     const dispatch = useDispatch()
@@ -67,6 +69,12 @@ const Notes = ({ toggleForm, setToggleForm }) => {
         }
     }, [error, message, dispatch])
 
+
+    useEffect(() => {
+        if (!localStorage.getItem("token")) {
+            navigate('/login')
+        }
+    }, [])
 
     return (
         <div className='notes'>

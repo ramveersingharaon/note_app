@@ -6,15 +6,15 @@ import { getNotes } from '../../redux/actions/noteAction'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
+
 
 
 
 const Login = () => {
-    const navigate = useNavigate()
     const { error, message } = useSelector(state => state.user)
 
-
+    // const navigate = useNavigate();
 
     const dispatch = useDispatch()
     const initialState = {
@@ -31,8 +31,7 @@ const Login = () => {
         await dispatch(getNotes())
         console.log(form)
         setForm(initialState)
-
-
+        // navigate('/notes')
 
     }
 
